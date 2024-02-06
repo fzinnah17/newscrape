@@ -11,9 +11,9 @@ const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors());
-app.use(express.json()); // for parsing application/json
+app.use(express.json()); // JSON parsing
 
-// Routes
+// Registering the API routes
 app.use('/api/news', newsRoutes);
 
 app.get('/', (req, res) => {
