@@ -24,3 +24,6 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+
+// get /news/articles
+// get /news/articles?category=games

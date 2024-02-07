@@ -20,3 +20,15 @@ const insertMockData = async () => {
 };
 
 insertMockData().catch(console.error);
+
+
+// class Article
+// string name
+// string link
+// string snippet
+// string name2
+
+
+// article1 = new Article()
+
+// postgres.save(article1)
