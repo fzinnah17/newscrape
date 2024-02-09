@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import { pool } from './config/database.js';
+// import { pool } from './config/database.js';
 import newsRoutes from './routes/NewsRoutes.js';
 
 dotenv.config();
