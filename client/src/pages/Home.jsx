@@ -1,53 +1,48 @@
 import React, { useEffect, useState } from 'react';
 import { getAllNews } from '../services/newsService.js';
-import "../css/Home.css";
-
 
 const Home = () => {
-    const [articles, setArticles] = useState([]);
     const [democratArticles, setDemocratArticles] = useState([]);
-    const [RepublicArticles, setRepublicArticles] = useState([]);
+    const [republicArticles, setRepublicArticles] = useState([]);
 
     useEffect(() => {
-        const fetchArticles = async () => {
+        const fetchAndFilterArticles = async () => {
             try {
                 const response = await getAllNews();
-                setArticles(response.data.articles);
+                const articles = response.data.articles;
+                // Filter articles once, immediately after fetching
+                const filteredDemocratArticles = articles.filter(article => article.category === 'democrat');
+                const filteredRepublicArticles = articles.filter(article => article.category === 'republic');
+                setDemocratArticles(filteredDemocratArticles);
+                setRepublicArticles(filteredRepublicArticles);
             } catch (error) {
                 console.error('Error fetching news articles:', error);
             }
         };
 
-        fetchArticles();
+        fetchAndFilterArticles();
     }, []);
 
-    useEffect(() => {
-        const filterArticles = () => {
-            const democratArticles = articles.filter(article => article.category === 'democrat');
-            const RepublicArticles = articles.filter(article => article.category === 'republic');
-            setDemocratArticles(democratArticles);
-            setRepublicArticles(RepublicArticles);
-        };
-
-        filterArticles();
-    }, [articles]);
-
     return (
-        <div>
-            <h1>Home</h1>
-            <div className="left-cards">
+        <div className="p-4">
+            <h1 className="text-4xl font-bold text-center mb-6">Home</h1>
+            <div className="flex flex-wrap justify-center">
                 {democratArticles.map((article) => (
-                    <div key={article.id} className="card">
-                        <h2>{article.title}</h2>
-                        <p>{article.description}</p>
+                    <div key={article.id} className="w-full md:w-1/2 lg:w-1/3 p-4">
+                        <div className="bg-blue-100 rounded-xl p-6 shadow-lg">
+                            <h2 className="text-xl font-semibold mb-2">{article.title}</h2>
+                            <p className="text-gray-700">{article.description}</p>
+                        </div>
                     </div>
                 ))}
             </div>
-            <div className="right-cards">
-                {RepublicArticles.map((article) => (
-                    <div key={article.id} className="card">
-                        <h2>{article.title}</h2>
-                        <p>{article.description}</p>
+            <div className="flex flex-wrap justify-center">
+                {republicArticles.map((article) => (
+                    <div key={article.id} className="w-full md:w-1/2 lg:w-1/3 p-4">
+                        <div className="bg-red-100 rounded-xl p-6 shadow-lg">
+                            <h2 className="text-xl font-semibold mb-2">{article.title}</h2>
+                            <p className="text-gray-700">{article.description}</p>
+                        </div>
                     </div>
                 ))}
             </div>
@@ -56,4 +51,3 @@ const Home = () => {
 };
 
 export default Home;
-
