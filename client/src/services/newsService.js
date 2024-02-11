@@ -4,7 +4,10 @@ import mockData from '../../../server/initialmockData/mockData.js';
 
 export const getAllNews = async () => {
   try {
-    return mockData;
+    // return mockData; // just regular mock data
+    
+    // Simulate an API response structure
+    return { data: { articles: mockData } };
   }
   catch (error) {
     console.error('Error fetching news', error);

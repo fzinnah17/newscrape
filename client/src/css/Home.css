@@ -1,0 +1,27 @@
+.left-cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.right-cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: calc(50% - 1rem);
+    margin: 0.5rem;
+    padding: 1rem;
+    background-color: #E5F3FF; /* light blue for democrat */
+    border-radius: 0.5rem;
+}
+
+.right-cards .card {
+    background-color: #FFEBEB; /* light red for republic */
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: calc(100% - 1rem);
+    }
+}
