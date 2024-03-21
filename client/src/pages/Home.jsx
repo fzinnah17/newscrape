@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getAllNews } from '../services/newsService.js';
 
-const Home = () => {
+const Home = ({ onSwipe }) => {
     const [democratArticles, setDemocratArticles] = useState([]);
     const [republicArticles, setRepublicArticles] = useState([]);
 

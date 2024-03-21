@@ -2,7 +2,7 @@ const mockData = [
   {
     "id": 1,
     "title": "Republicans Pass Tax Reform Bill",
-    "description": "In a historic move, Republicans in Congress have passed a tax reform bill that promises significant cuts for businesses and middle-class families.",
+    "description": "In a historic move, Republicans in Congress have passed a tax reform bill.",
     "category": "republic"
   },
   {
