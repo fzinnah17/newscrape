@@ -49,3 +49,19 @@ test_dataset = merged_datasets.train_test_split(test_size = 0.2, seed = 42)["tes
 # print(f"train_dataset:\n{pd.DataFrame(train_dataset[:2])}")
 
 # print(f"test_dataset:\n{pd.DataFrame(test_dataset[:2])}")
+
+#Tokenize the dataset using DistilBERT's tokenizer. It is the process of converting text into tokens, which are small structures or units of text.
+#Here it is used to convert the text data into a format that can be understood by the DistilBERT model. It splits the text into subwords and words that the model was trained on, and then converts these tokens into numbers that the model can understand
+tokenizer = DistilBertTokenizer.from_pretrained(pretrained_model) #from_pretrained method is userd to load the tokenizer
+
+#Step 8: Function to tokenize the texts before feeding it to the model
+
+def tokenize_texts(sentences):
+    return tokenizer(sentences['text'], padding = 'max_length', truncation = True)
+
+#Step 9: Apply the tokenizer to the training and test datasets
+tokenize_train_dataset = train_dataset.map(tokenize_texts, batched = True)
+tokenize_test_dataset = test_dataset.map(tokenize_texts, batched = True)
+
+# print(f"tokenize_train_dataset:\n{pd.DataFrame(tokenize_train_dataset[:2])}")
+# print(f"tokenize_test_dataset:\n{pd.DataFrame(tokenize_test_dataset[:2])}")
