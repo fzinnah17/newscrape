@@ -13,3 +13,7 @@ import matplotlib.pyplot as plt
 
 #Check if CUDA ia available otherwise use CPU(My macbook m2 chip pro has CPU
 device = torch.device("cuda" if torch.device.cuda.is_available() else "cpu")
+
+#Pretrained model that we are using
+pretrained_model = 'distilbert-base-uncased'
+
